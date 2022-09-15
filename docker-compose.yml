@@ -63,23 +63,23 @@ services:
       - laravel
     entrypoint: ["composer"]
 
-  npm:
-    image: node:13.7
-    container_name: npm
-    volumes:
-      - ./src:/var/www/html
-    working_dir: /var/www/html
-    entrypoint: ["npm"]
+  # npm:
+  #   image: node:13.7
+  #   container_name: npm
+  #   volumes:
+  #     - ./src:/var/www/html
+  #   working_dir: /var/www/html
+  #   entrypoint: ["npm"]
 
-  yarn:
-    build:
-      context: .
-      dockerfile: yarn.dockerfile
-    container_name: yarn
-    volumes:
-      - ./src:/var/www/html
-    working_dir: /var/www/html
-    entrypoint: ["yarn"]
+  # yarn:
+  #   build:
+  #     context: .
+  #     dockerfile: yarn.dockerfile
+  #   container_name: yarn
+  #   volumes:
+  #     - ./src:/var/www/html
+  #   working_dir: /var/www/html
+  #   entrypoint: ["yarn"]
 
   artisan:
     build:
