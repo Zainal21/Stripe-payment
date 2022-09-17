@@ -17,7 +17,7 @@ use App\Http\Controllers\{
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/home');
 });
 
 Auth::routes();
@@ -25,4 +25,4 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/plan-products', [PlanProductController::class, 'index'])->name('plan.index');
 Route::get('/plan-products/{slug}', [PlanProductController::class,'show'])->name('plan.show');
-Route::post('/plan-produts.purchase/{slug}', [PlanProductController::class,'purchase'])->name('plan.purchase');
+Route::post('/plan-produts/purchase/{slug}', [PlanProductController::class,'purchase'])->name('plan.purchase');

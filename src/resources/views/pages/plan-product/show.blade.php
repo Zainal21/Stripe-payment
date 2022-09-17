@@ -17,7 +17,7 @@
             <div class="card">
                 <div class="card-header">{{ $plans->name }}</div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('plan.purchase', $plans->slug) }}" class="card-form mt-3 mb-3">
+                    <form method="POST" action="{{ route('plan.purchase', $plans->slug) }}" class="card-form mt-3 mb-3" id="card-form">
                         @csrf
                         <input type="hidden" name="payment_method" class="payment-method">
                         <input class="StripeElement mb-3" name="card_holder_name" placeholder="Card holder name"
@@ -93,7 +93,7 @@
     })
     card.mount('#card-element')
     let paymentMethod = null
-    $('.card-form').on('submit', function (e) {
+    $('#card-form').on('submit', function (e) {
         $('button.pay').attr('disabled', true)
         if (paymentMethod) {
             return true

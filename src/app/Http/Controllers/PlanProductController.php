@@ -25,6 +25,7 @@ class PlanProductController extends Controller
     {
         $user          = $request->user();
         $paymentMethod = $request->input('payment_method');
+        dd($paymentMethod);
     
         try {
             $user->createOrGetStripeCustomer();
