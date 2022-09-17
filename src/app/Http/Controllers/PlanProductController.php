@@ -21,16 +21,15 @@ class PlanProductController extends Controller
         return view('pages.plan-product.show', compact('plans', 'intent'));
     }
 
-    public function purchase(Request $request, Plan $plan)
+    public function purchase(Request $request, $slug)
     {
         $user          = $request->user();
         $paymentMethod = $request->input('payment_method');
-        dd($paymentMethod);
-    
+        $plan          =  Plan::where(['slug' => $slug])->first();
         try {
             $user->createOrGetStripeCustomer();
             $user->updateDefaultPaymentMethod($paymentMethod);
-            $user->charge($plan->cost * 100, $paymentMethod);        
+            $user->charge($plan->cost, $paymentMethod);        
         } catch (\Exception $exception) {
             $this->payment_logs_inserted( json_encode(['error' => $exception->getMessage()]));
             return back()->with('error', $exception->getMessage());
