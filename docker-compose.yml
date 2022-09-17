@@ -1,8 +1,6 @@
 version: "3.7"
-
 networks:
   laravel:
-
 services:
   site:
     build:
